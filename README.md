@@ -1,1 +1,1 @@
-# Econ312
+# Econ312 Final Project
