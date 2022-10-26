@@ -12,6 +12,7 @@ pretty_json = json.loads(r.text)
 
 
 #writing json file
+# a - append x - create r - read w - write
 with open("btcusd.json", "a") as write_file:
     json.dump(data, write_file)
 
