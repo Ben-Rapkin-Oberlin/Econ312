@@ -20,5 +20,5 @@ Indust_prod_semi_historical: 01-01-1954 to 01-09-2022, one measurement a month, 
 
 PCE_historical:  01-01-1959 to 01-09-2022, one measurement a month
 
-PPI_semi_historical: 12-01-1984 to 09-01-2022, one measurement a month
+PPI_semi_historical: 12-01-1984 to 01-09-2022, one measurement a month
 
