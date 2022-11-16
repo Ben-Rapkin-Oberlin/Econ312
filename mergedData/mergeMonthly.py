@@ -5,6 +5,7 @@ data1954 = pandas.read_csv("datasets/economic/Indust_prod_semi_historical.csv")
 data1959 = pandas.read_csv("datasets/economic/PCE_historical.csv")
 data1984 = pandas.read_csv("datasets/economic/PPI_semi_historical.csv")
 
+
 # Merge the data
 print(data1954.shape, (2022-1954)*12)
 print(data1959.shape, (2022-1959)*12)

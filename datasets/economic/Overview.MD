@@ -1,18 +1,23 @@
 ## 6 a day
 
-NVDA_historical: 01-25-1999 to 10-28-2022, 6 measurements a day, 
+NVDA_historical: 01-25-1999 to 10-28-2022, 6 measurements a day, 23 years
 
-SOXX_historical: 07-13-2001 to 10-28-2022, six measurements a day
+SOXX_historical: 07-13-2001 to 10-28-2022, 6 measurements a day, 21 years
 
-BTC-USD_historical: 9-17-2014 to 10-31-2022, 6 measurements a day, data stored as mm-dd-yy
+BTC-USD_historical: 9-17-2014 to 10-31-2022, 6 measurements a day, 8 years, stored as mm-dd-yy
 
-SEMI_historical: 03-30-2022 to 10-28-2022, six measurements a day
+------current cut off----------------------------------------------
+
+SEMI_historical: 03-30-2022 to 10-28-2022, 6 measurements a day, <1 year
 
 
 ## 1 a day
 
-BTC-USD: 10-28-21 to 10-28-22, completes missing information from USD_historical, 1 measurement a day, data stored in yy-mm-dd
+BTC-USD: 10-28-21 to 10-28-22, completes missing information from BTC-USD_historical, 1 measurement a day, data stored in yy-mm-dd, 1 year
 
+NVDA_historical: 01-25-1999 to 10-28-2022, 1 measurement a day but stored as 6 rows, 23 years
+
+SOXX_historical: 07-13-2001 to 10-28-2022, 1 measurement a day but stored as 6 rows, 21 years
 
 ## 1 a month
 
