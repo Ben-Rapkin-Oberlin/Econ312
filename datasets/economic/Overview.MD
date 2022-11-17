@@ -1,9 +1,5 @@
 ## 6 a day
 
-NVDA_historical: 01-25-1999 to 10-28-2022, 6 measurements a day, 23 years
-
-SOXX_historical: 07-13-2001 to 10-28-2022, 6 measurements a day, 21 years
-
 BTC-USD_historical: 9-17-2014 to 10-31-2022, 6 measurements a day, 8 years, stored as mm-dd-yy
 
 ------current cut off----------------------------------------------
