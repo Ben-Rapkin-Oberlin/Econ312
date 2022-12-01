@@ -1,22 +1,31 @@
 import lightgbm as lgb
 import pandas as pd
 import numpy as np
+#import matplotlib as plt
+import matplotlib.pyplot as plt
 seed=1
 df=pd.read_csv('AllData\\trainingSets\\NVDA_SOXX_BTC.csv')
+df.drop(columns=['Date'], inplace=True)
 #shuffle df based on seed
 df=df.sample(frac=1, random_state=seed)
 
-trainingD=df.iloc[:int(len(df)*0.6),1:].to_numpy
-trainingL=df.iloc[:int(len(df)*0.6),0].to_numpy
+trainingD=df.iloc[:int(len(df)*0.8),1:]
+trainingL=df.iloc[:int(len(df)*0.8),0]
 
-validationD=df.iloc[int(len(df)*0.6):int(len(df)*0.8),1:].to_numpy
-validationL=df.iloc[int(len(df)*0.6):int(len(df)*0.8),0].to_numpy
 
-validation_data = lgb.Dataset('validation.svm', reference=train_data)
-testingD=df.iloc[int(len(df)*0.8):,:].to_numpy
-testingL=df.iloc[int(len(df)*0.8):,0].to_numpy
+
+testingD=df.iloc[int(len(df)*0.8):,1:]
+testingL=df.iloc[int(len(df)*0.8):,0]
 
 
 train_data = lgb.Dataset(trainingD, label=trainingL)
-validation_data = train_data.create_valid(), label=validationL)
 
+kant = lgb.LGBMRegressor()
+kant.fit(trainingD, trainingL, verbose=20)
+#kant.score(testingD, testingL)
+print('Training accuracy {:.4f}'.format(kant.score(trainingD,trainingL)))
+print('Testing accuracy {:.4f}'.format(kant.score(testingD,testingL)))
+
+ax = lgb.plot_importance(kant, max_num_features=10)
+plt.show()
+#plt.show()
