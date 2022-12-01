@@ -1,0 +1,29 @@
+{% extends "table_base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>label</th>
+        <th>head_shape</th>
+        <th>body_shape</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for monk in monks1 %}
+        <tr>
+          <td>{{ monk.label }}</td>
+          <td>{{ monk.head_shape }}</td>
+          <td>{{ monk.body_shape }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+  </script>
+{% endblock %}

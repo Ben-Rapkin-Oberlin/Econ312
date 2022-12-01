@@ -1,0 +1,7 @@
+{% for monk in monks1 %}
+        <a href="#">
+            <h2>{{ monk['label'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ monk['jacket_color'] }}</span>
+        <hr>
+    {% endfor %}
