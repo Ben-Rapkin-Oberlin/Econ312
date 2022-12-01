@@ -27,8 +27,8 @@ def index():
 @app.route('/financial')
 def table():
     conn = get_db_connection()
-    monks1 = conn.execute('SELECT * FROM monks1').fetchall()
+    fin = conn.execute('SELECT * FROM fin').fetchall()
     conn.close()
     return render_template('table.html', title='Bootstrap Table',
-                           monks1=monks1)
+                           fin=fin)
     #return render_template('index.html', monks1=monks1)

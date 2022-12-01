@@ -4,17 +4,17 @@
   <table id="data" class="table table-striped">
     <thead>
       <tr>
-        <th>label</th>
-        <th>head_shape</th>
-        <th>body_shape</th>
+        <th>Date</th>
+        <th>close_NVDA</th>
+        <th>open_SOXX</th>
       </tr>
     </thead>
     <tbody>
-      {% for monk in monks1 %}
+      {% for row in fin %}
         <tr>
-          <td>{{ monk.label }}</td>
-          <td>{{ monk.head_shape }}</td>
-          <td>{{ monk.body_shape }}</td>
+          <td>{{ row.Date }}</td>
+          <td>{{ row.close_NVDA }}</td>
+          <td>{{ row.open_SOXX }}</td>
         </tr>
       {% endfor %}
     </tbody>
