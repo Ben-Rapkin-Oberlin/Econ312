@@ -11,7 +11,7 @@ cur = connection.cursor()
 format=""
 vals="VALUES("
 fordatabase=""
-with open('AllData\\mergedData\\semi-final\\NVDA_SOXX.csv') as f:
+with open('AllData\\trainingSets\\NVDA_SOXX_BTC.csv') as f:
   reader = csv.reader(f)
   row1 = next(reader)
   for col in row1:
@@ -23,7 +23,7 @@ vals=vals[:-1]+')'
 #print(fordatabase[:-2])
 #print(format+vals)
 
-file = open('AllData\\mergedData\\semi-final\\NVDA_SOXX.csv')
+file = open('AllData\\trainingSets\\NVDA_SOXX_BTC.csv')
 
 contents = csv.reader(file)
 
