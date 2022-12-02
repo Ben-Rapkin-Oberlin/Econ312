@@ -36,10 +36,11 @@ def table():
                            fin=fin)
     #return render_template('index.html', monks1=monks1)
 
-@app.route('/model')
+@app.route('/models')
 def lineplot():
     df = pd.read_csv('AllData\\results\\NVDA_SOXX_BTC.csv')
     fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Stock Price Prediction')
+    fig.add_vline(x=df.iloc[1832,0], line_width=3, line_dash="dash", line_color="black")
     fig.update_xaxes(rangeslider_visible=True)
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template('lineplot.html', graphJSON=graphJSON)

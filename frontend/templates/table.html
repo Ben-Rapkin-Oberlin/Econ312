@@ -1,20 +1,69 @@
 {% extends "table_base.html" %}
 
 {% block content %}
+  <body>
+    <style>
+    p {
+      padding-top: 10px;
+      padding-left: 10px;
+    }
+    </style>
+    <p>
+      The above table consits of the scraped financial data used to train the model. 
+      The model was not directly trained on this however. The data joined with itself so that each row consisted of
+      eight days of information for each stock, except for the first day of which the model could only see the open 
+      price. Additionally, the data was normalized to be between 0 and 1. Then, the data was split into a training set,
+      a validation set, and a test set. The first two sets were randomly shuffled.
+
+    </p>
+
+  </body>
   <table id="data" class="table table-striped">
     <thead>
       <tr>
         <th>Date</th>
+        <th>high_NVDA</th>
+        <th>low_NVDA</th>
+        <th>open_NVDA</th>
         <th>close_NVDA</th>
+        <th>volume_NVDA</th>
+        <th>adjvclose_NVDA</th>
+        <th>high_SOXX</th>
+        <th>low_SOXX</th>
         <th>open_SOXX</th>
+        <th>close_SOXX</th>
+        <th>volume_SOXX</th>
+        <th>adjclose_SOXX</th>
+        <th>high_BTC</th>
+        <th>low_BTC</th>
+        <th>open_BTC</th>
+        <th>close_BTC</th>
+        <th>volume_BTC</th>
+        <th>adjclose_BTC</th>
       </tr>
     </thead>
     <tbody>
       {% for row in fin %}
         <tr>
           <td>{{ row.Date }}</td>
+          <td>{{ row.high_NVDA }}</td>
+          <td>{{ row.low_NVDA }}</td> 
           <td>{{ row.open_NVDA }}</td>
+          <td>{{ row.close_NVDA }}</td>
+          <td>{{ row.volume_NVDA}}</td>
+          <td>{{ row.adjclose_NVDA}}</td>
+          <td>{{ row.high_SOXX }}</td>
+          <td>{{ row.low_SOXX }}</td>
           <td>{{ row.open_SOXX }}</td>
+          <td>{{ row.close_SOXX }}</td>
+          <td>{{ row.volume_SOXX }}</td>
+          <td>{{ row.adjclose_SOXX }}</td>
+          <td>{{ row.high_BTC}}</td>
+          <td>{{ row.low_BTC }}</td>
+          <td>{{ row.open_BTC }}</td>
+          <td>{{ row.close_BTC }}</td>
+          <td>{{ row.volume_BTC }}</td>
+          <td>{{ row.adjclose_BTC }}</td>
         </tr>
       {% endfor %}
     </tbody>
@@ -27,3 +76,4 @@
     });
   </script>
 {% endblock %}
+
