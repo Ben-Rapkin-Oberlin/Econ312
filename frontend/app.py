@@ -1,7 +1,10 @@
 import sqlite3
 from flask import Flask, render_template
 from werkzeug.exceptions import abort
-
+import pandas as pd
+import json
+import plotly
+import plotly.express as px
 app = Flask(__name__)
 
 def get_db_connection():
@@ -32,3 +35,11 @@ def table():
     return render_template('table.html', title='Bootstrap Table',
                            fin=fin)
     #return render_template('index.html', monks1=monks1)
+
+@app.route('/model')
+def lineplot():
+    df = pd.read_csv('AllData\\results\\NVDA_SOXX_BTC.csv')
+    fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Stock Price Prediction')
+    fig.update_xaxes(rangeslider_visible=True)
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return render_template('lineplot.html', graphJSON=graphJSON)

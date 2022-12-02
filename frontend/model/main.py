@@ -7,6 +7,8 @@ from sklearn.metrics import mean_squared_error
 from getData import read
 import plotly.express as px
 
+
+
 params = {
 
     "boosting_type": "gbdt",
@@ -51,9 +53,11 @@ print(date.shape)
 #plt.show()
 
 df=pd.DataFrame({'Date':date,'Truth':y_all,'Prediction':y_pred})
-fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Stock Price Prediction')
-fig.update_xaxes(rangeslider_visible=True)
-fig.show()
+df.to_csv('AllData\\results\\NVDA_SOXX_BTC.csv', index=False)
+
+#fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Stock Price Prediction')
+#fig.update_xaxes(rangeslider_visible=True)
+#fig.show()
 #ax = lgb.plot_importance(kant, max_num_features=10)
 #plt.show()
 #plt.show()
