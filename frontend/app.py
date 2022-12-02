@@ -36,11 +36,21 @@ def table():
                            fin=fin)
     #return render_template('index.html', monks1=monks1)
 
-@app.route('/models')
+@app.route('/results')
 def lineplot():
     df = pd.read_csv('AllData\\results\\NVDA_SOXX_BTC.csv')
-    fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Stock Price Prediction')
+    fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Gradient Boosted Tree')
     fig.add_vline(x=df.iloc[1832,0], line_width=3, line_dash="dash", line_color="black")
     fig.update_xaxes(rangeslider_visible=True)
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template('lineplot.html', graphJSON=graphJSON)
+    graphJSON1 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    
+    df = pd.read_csv('AllData\\results\\NVDA_SOXX_BTC.csv')
+    fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Neural Network')
+    fig.add_vline(x=df.iloc[1832,0], line_width=3, line_dash="dash", line_color="black")
+    fig.update_xaxes(rangeslider_visible=True)
+    graphJSON2 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return render_template('lineplot.html', graphJSON1=graphJSON1, graphJSON2=graphJSON2)
+
+@app.route('/methods')
+def methods():
+    return render_template('methods.html')

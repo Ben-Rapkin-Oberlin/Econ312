@@ -1,15 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <body>
-    <h1>The Initial Model</h1>
-    <div id='chart' class='chart'”></div>
+<body>
+    <h1>The Inital Models</h1>
+    <p>Inorder to gauge the effectivness of adding int sentiment analysis,
+        we first trained two models on only the collected finacial data.
+        Initally we planed on only using one model, but out of concern for 
+        algorithmic bias, we decided to use two. The first model is a
+        gradient boosted tree from the lightgbm library, it was the better
+        preformer of the two with a mean squared error of .000185. The second
+        is a neural network from the sklearn library, it had a mean squared error
+        of .000418
+    </p>
+
+    <div id='chart1' class='chart'”></div>
     </body><script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
     <script type='text/javascript'>
-    var graphs = {{graphJSON | safe}};
-    Plotly.plot('chart',graphs,{});
+    var graphs = {{graphJSON1 | safe}};
+    Plotly.plot('chart1',graphs,{});
+    </script></html>
+</body>
+
+<body>
+    <div id='chart2' class='chart'”></div>
+    </body><script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script type='text/javascript'>
+    var graphs = {{graphJSON2 | safe}};
+    Plotly.plot('chart2',graphs,{});
     </script></html>
     <body>
         <p>The black dashed line shows the split between the training/validation data and the test data</p>
     </body>
+        
+</body>
+<body>
+    <p>
+        As you can see, while both networks match major trends in the data, they are not very accurate.
+        This is alright for our purposes as we are not trying to make the most accurate model, but rather 
+        test the accuacy of adding sentiment analysis into our data. Let's take a look below!
+    </p>
 {% endblock %}
