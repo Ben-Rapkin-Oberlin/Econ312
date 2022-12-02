@@ -1,7 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} A more Human Predictor {% endblock %}</h1>      
+    <h1>{% block title %} A more Human Predictor {% endblock %}</h1>
+    <body>
+        <p style="padding-top: 100px; font-size: 25px;"> 
+            Introduction
+         </p>
+    </body>
+    <body>
+        <style>
+            p {
+              padding-top: 10px;
+              font-size: 17px;
+              }
+        
+        </style>
+    <p>
+        Traditional approaches to Machine Learning models in financial markets are generally borne 
+        from a qauntativistic approach to the market. This means they attempt to find corrrelations
+        between market indicators such as inflation, interest rates, and other stocks, and they're common
+        for good reason. Modern trading algorithms have been able to find great success with this approach
+        and today huge number of trades are executed by these algorithms.
+    </p>    
+    <p>
+        However, this clasic approach does have blind spots. The most notable example of this is the recent
+        surge in gamestop's stock price during 2021. This surge was driven by a group of retail investors collaborating
+        on messaging boards like reddit and twitter to buy up shares of a stock that was heavily shorted, leading to 
+        collosal losses for the hedge funds that relied on those same qauntativistic algorithms which predicted the stock
+        bounce back. However, due to the collective action of the retail investors, the stock price continued to rise,
+        further driving corporate losses far past the point where they could divest.    
+    </p>
+    <p>
+        The focus of this project is to ask whether we can adapt our clasical models to the new era of 
+        social media and widespread communication to better predict humanistic trends in the market. While the 
+        scope of this project was limited to a specific stock (NVDA), this approach holds promise for a wide range of
+        applications such as predicting ressessions or market crashes that can have widespread effects on the economy,
+        and expecially on the most vulnerable members of society.
+    </p>
+
+    </body>      
 
 {% endblock %}
 

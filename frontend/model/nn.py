@@ -18,15 +18,31 @@ y=df.iloc[int(len(df)*0.8):,0].to_numpy()
 test=df.iloc[:int(len(df)*0.8),1:].to_numpy()
 testL=df.iloc[:int(len(df)*0.8),0].to_numpy()
 #print(testL)
-Diego = MLPClassifier(random_state=1)
 
-#MLPClassifier(solver='lbfgs', alpha=1e-5,
- #hidden_layer_sizes=(50,), random_state=1,max_iter=100)
 
-#st=time.process_time()
-Diego.fit(x,y)
-#print(time.process_time()-st)
-predictions=Diego.predict(test) 
+Import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class NeuralNetwork(nn.Module):
+    def __init__(self,datasize):
+        super(NeuralNetwork, self).__init__()
+        self.flatten = nn.Flatten()
+        self.linear_relu_stack = nn.Sequential(
+            nn.Linear(datasize, int(datasize/2)),
+            nn.ReLU(),
+            nn.Linear(int(datasize/2), int(datasize/4)),
+            nn.ReLU(),
+            nn.Linear(int(datasize/4), 1),
+        )
+
+    def forward(self, x):
+        x = self.flatten(x)
+        logits = self.linear_relu_stack(x)
+        return logits
+model = NeuralNetwork(x.shape[1])
+james=X)
+
 #print(mean_squared_error(predictions,testL))
 plt.plot(testL.index, testL, label = "Truth")
 plt.plot(testL.index, predictions, label = "Prediction")
