@@ -19,8 +19,7 @@ to process the raw data
 **frontend** houses the front end created using the Flask framework.It is based on and updated via SQLite
 
 
-**requirements.txt** All the requirements, currently working to get this much smaller as right now it has
-all installed python packages
+**requirements.txt** All the requirements, currently working to get this much smaller as right now it has all installed python packages
 
 
 
