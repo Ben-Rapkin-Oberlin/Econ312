@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS fin;
 
 
 CREATE TABLE fin(
-        Date DECIMAL(5,5),
+        Date TEXT,
         high_NVDA DECIMAL(5,5),
         low_NVDA DECIMAL(5,5),
         open_NVDA DECIMAL(5,5),
