@@ -23,9 +23,10 @@ def get_data(post_id):
 
 
 @app.route('/')
-def index():
-
-    return render_template('index.html')
+def home():
+    
+    full_filename = 'static\\gmeStock.png'
+    return render_template("home.html", user_image = full_filename)
 
 @app.route('/financial')
 def table():
@@ -49,7 +50,12 @@ def lineplot():
     fig.add_vline(x=df.iloc[1832,0], line_width=3, line_dash="dash", line_color="black")
     fig.update_xaxes(rangeslider_visible=True)
     graphJSON2 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template('lineplot.html', graphJSON1=graphJSON1, graphJSON2=graphJSON2)
+    
+
+    df=pd.DataFrame({'Algorithm': ['GBT', 'NN'], 'Mean Squared Error' : [.000185,.000418]})
+    fig = px.bar(df, x='Algorithm', y='Mean Squared Error', title='Comparative Accuracy', color='Algorithm')
+    graphJSON3 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return render_template('lineplot.html', graphJSON1=graphJSON1, graphJSON2=graphJSON2, graphJSON3=graphJSON3)
 
 @app.route('/methods')
 def methods():

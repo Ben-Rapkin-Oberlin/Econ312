@@ -7,7 +7,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <a class="navbar-brand" href="{{ url_for('index')}}"> Home</a>
+      <a class="navbar-brand" href="{{ url_for('home')}}"> Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -28,7 +28,7 @@
   </nav>
     <div class="container">
       <h1>Underlying Data</h1>
-      <hr>
+      <hr style="width:50%;text-align:left;border-width: 2px;margin-left:0"> 
       {% block content %}{% endblock %}
     </div>
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

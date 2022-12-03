@@ -24,8 +24,8 @@ def read(path,seed):
     trainingD=dtrain.iloc[:int(len(df)*.75),1:]
     trainingL=dtrain.iloc[:int(len(df)*.75),0]
 
-    validationD=df.iloc[int(len(df)*0.6):int(len(df)*0.75):,1:]
-    validationL=df.iloc[int(len(df)*0.6):int(len(df)*0.75):,0]
+    validationD=dtrain.iloc[int(len(df)*.75):,1:]
+    validationL=dtrain.iloc[int(len(df)*.75):,0]
 
 
 

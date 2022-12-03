@@ -3,15 +3,16 @@
 {% block content %}
 <body>
     <h1>The Inital Models</h1>
-    <p>Inorder to gauge the effectivness of adding in sentiment analysis,
+    <hr style="width:50%;text-align:left;border-width: 2px;margin-left:0"> 
+    <p style="padding-top: 10px; font-size: 17px;"> 
+        Inorder to gauge the effectivness of adding in sentiment analysis,
         we first trained two models on only the collected finacial data.
         Initally we planed on only using one model, but out of concern for 
         algorithmic bias, we decided to use two. The first model is a
-        gradient boosted tree from the lightgbm library, it was the better
-        preformer of the two with a mean squared error of .000185. The second
-        is a neural network from the sklearn library, it had a mean squared error
-        of .000418
+        gradient boosted tree from the lightgbm library and the second
+        is a neural network from the sklearn library.
     </p>
+    <p>(The black dashed line shows the split between the training/validation data and the test data)</p>
 
     <div id='chart1' class='chart'”></div>
     </body><script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
@@ -29,14 +30,31 @@
     Plotly.plot('chart2',graphs,{});
     </script></html>
     <body>
-        <p>The black dashed line shows the split between the training/validation data and the test data</p>
+        <p style="padding-top: 10px; font-size: 17px;"> 
+            While both networks match major trends in the data, they both struggle with with specific day
+            to day movements. We can see this on the below graph comparing the Mean Squared Error of both
+            graphs. 
+        </p>
     </body>
+    <div id='chart3' class='chart'”></div>
+    </body><script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script type='text/javascript'>
+    var graphs = {{graphJSON3 | safe}};
+    Plotly.plot('chart3',graphs,{});
+    </script></html>
         
 </body>
 <body>
-    <p>
-        As you can see, while both networks match major trends in the data, they are not very accurate.
-        This is alright for our purposes as we are not trying to make the most accurate model, but rather 
-        test the accuacy of adding sentiment analysis into our data. Let's take a look below!
+    <p style="padding-top: 10px; font-size: 17px;"> 
+        To give a better idea of what these numbers mean, the MSE for both models on the testing data 
+        was ~10e-6, or effectivly 0. Ideally, we want the models to preform as well on the testing sets
+        as the training set. So in otherwords, neither model is doing particularly great. However, 
+        that's ok for our purposes. Because we want to look at how sentiment analysis effects their predictions,
+        all we need is a baseline to compare to. Afterall, none of these models are actually going into production.
+        So lets take a look!
     </p>
+    <p style="padding-top: 10px; font-size: 17px;"> 
+        The NLP portion of this project is not yet complete, but should be soon!
+    </p>
+
 {% endblock %}

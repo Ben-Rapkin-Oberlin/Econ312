@@ -37,6 +37,19 @@ df.drop(columns=['Date'], inplace=True)
 for column in df.columns:
         df[column] = (df[column] - df[column].min()) / (df[column].max() - df[column].min())
 
+
+dtrain = df.iloc[:int(len(df)*0.9),:]
+#dtrain = dtrain.sample(frac=1, random_state=seed)
+
+
+trainingD=dtrain.iloc[:int(len(df)*.75),1:]
+trainingL=dtrain.iloc[:int(len(df)*.75),0]
+validationD=dtrain.iloc[int(len(df)*.75):,1:]
+validationL=dtrain.iloc[int(len(df)*.75):,0]
+testingD=df.iloc[int(len(df)*0.9):,1:]
+testingL=df.iloc[int(len(df)*0.9):,0]
+
+
 x_all=df.iloc[:,1:]
 y_all=df.iloc[:,0]
 #y_pred = kant.predict(X_test, num_iteration=kant.best_iteration)
@@ -44,7 +57,14 @@ y_pred = kant.predict(x_all, num_iteration=kant.best_iteration)
 #print(y_pred)
 #print(sum(y_pred)/len(y_pred))
 #print(sum(testingL)/len(testingL))
-print(mean_squared_error(y_all,y_pred))
+trp=kant.predict(trainingD, num_iteration=kant.best_iteration)
+vp=kant.predict(validationD, num_iteration=kant.best_iteration)
+te=kant.predict(testingD, num_iteration=kant.best_iteration)
+print('MSE trp ',mean_squared_error(trainingL,trp))
+print('MSE vp ',mean_squared_error(validationL,vp))
+print('MSE te ',mean_squared_error(testingL,te))
+
+print('MSE all: ',mean_squared_error(y_all,y_pred))
 print(date)
 print(date.shape)
 #plt.plot(date, y_test, label = "Truth")
