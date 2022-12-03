@@ -68,13 +68,20 @@
         
         </style>
         <p>
-            Pandas,
-            SQlite,
-            Plotly,
-            lightGBM,
-            sklearn,
-            Flask,
+            Once the Finacial Data had been scraped, it needed to be processed into a standard and usable format as initially rows were one of six measurements with the time/date taken being a column attribute. As such, using pandas I transposed the matrixes and concatenated all measurements of the same dates into a singular row. So, the new data layout was 6 measurements as columns, and the dates as rows. I preformed this operation on all the applicable Finacial data and then merged the data frames together based on date. This is the data shown on our “Finacial Data” tabs. This code for this is in frontend/AllData/mergeData.
         </p>    
-    </body>
+        <p>
+            From there the next step was preparing our data for training. The first step here was to make a new data frame where each row consisted of 8 rows from the financial data. Thus, the dimensions were n x m ->  (n-7) x (8xm). This was done so that the algorithms could make informed predictions with more than a day of context. Finally, because we want to predict the closing price of NVDA, we assume that the algorithms are being run in the morning, just after the market opens. As such, the columns relating to the current day's metrics (high, low, close, volume, adjvolume)were dropped as the model would not have access to those yet. This can be found in frontend\AllData\trainingSets
+        </p>
+        <p>
+            Next the data was split into training (67.5%), validation (22.5%), and test (10%) sets. The first two were shuffled so that the algorithms were focused on learning to predict from 8-day histories. This is because otherwise they would overly rely on rules for how the market behaved during the period contained by the validation data, which often did not apply to other periods in the market. This was proven experimentally as with shuffling we saw huge accuracies increases. Notably, the test data was not shuffled (although when it was the algorithms performed significantly better) as in actual use of stock price predictors, the data is sequential. After training, their scores were recorded as a csv file for later use. All this can be found in frontend\model. The Gradient Boosted Tree is in main.py and the Neural Network is in nn2.py.
+        </p>
+        <p>
+            Unfortunately, due to issues other encountered with NLP, the twitter data has not yet been made available for processing, so the current financial models cannot be compared to their humanistic counterparts. However, hopefully this will be implemented very soon!
+        </p>
+        <p>
+            After all the data analysis was done, the time came to build a frontend so that people could see, interpret, and interact with the data. The framework I settled on was Flask as it relates very closely to what we’ve been doing in class. Flask is made to use python and can be coordinated with an SQLite database. Before this project I had never done any web development, so this was an interesting first for me and took up a ton of time
+        </p>
+        </body>
 
 {% endblock %}
