@@ -11,6 +11,7 @@ cur = connection.cursor()
 format=""
 vals="VALUES("
 fordatabase=""
+
 with open('AllData\\mergedData\\semi-final\\NVDA_SOXX_BTC.csv') as f:
   reader = csv.reader(f)
   row1 = next(reader)
