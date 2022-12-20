@@ -5,12 +5,7 @@
     <h1>The Initial Models</h1>
     <hr style="width:50%;text-align:left;border-width: 2px;margin-left:0"> 
     <p style="padding-top: 10px; font-size: 17px;"> 
-        Inorder to gauge the effectivness of adding in sentiment analysis,
-        we first trained two models on only the collected finacial data.
-        Initally we planed on only using one model, but out of concern for 
-        algorithmic bias, we decided to use two. The first model is a
-        gradient boosted tree from the lightgbm library and the second
-        is a neural network from the sklearn library.
+        To thoroughly evaluate the effectiveness of adding sentiment analysis to our analysis, we first created two models using only the financial data that we had collected. We chose to use two separate models as a precaution against potential algorithmic bias, which can occur when a model is trained on a dataset that is not representative of the population as a whole. The first model we utilized was a gradient boosted tree from the LightGBM library, which is a popular choice for machine learning tasks due to its ability to handle large datasets and its high prediction accuracy. The second model we employed was a neural network from the scikit-learn library, a type of model that is particularly well-suited to tasks involving complex patterns and relationships. By training and comparing the performance of these two models, we were able to gauge the impact of incorporating sentiment analysis in our analysis.
     </p>
     <p>(The black dashed line shows the split between the training/validation data and the test data)</p>
 
@@ -31,9 +26,7 @@
     </script></html>
     <body>
         <p style="padding-top: 10px; font-size: 17px;"> 
-            While both networks match major trends in the data, they both struggle with with specific day
-            to day movements. We can see this on the below graph comparing the Mean Squared Error of both
-            graphs. 
+            While both models were able to capture major trends in the data, they both struggled to accurately predict specific day-to-day movements. This can be observed in the graph below, which compares the mean squared error of both models. The mean squared error is a measure of how well a model is able to fit the data, with a lower error indicating a better fit. 
         </p>
     </body>
     <div id='chart3' class='chart'”></div>
@@ -46,12 +39,7 @@
 </body>
 <body>
     <p style="padding-top: 10px; font-size: 17px;"> 
-        To give a better idea of what these numbers mean, the MSE for both models on the testing data 
-        was ~10e-6, or effectivly 0. Ideally, we want the models to preform as well on the testing sets
-        as the training set. So in otherwords, neither model is doing particularly great. However, 
-        that's ok for our purposes. Because we want to look at how sentiment analysis effects their predictions,
-        all we need is a baseline to compare to. Afterall, none of these models are actually going into production.
-        So lets take a look!
+        To provide some context, the mean squared error for both models on the testing data was around 10e-6, which is effectively zero. Ideally, we would like the models to perform just as well on the testing sets as they do on the training sets. However, neither model is performing particularly well in this case. It's worth noting that the purpose of this analysis is not to create production-ready models, but rather to see how sentiment analysis impacts their performance. As such, we only need a baseline to compare against. Let's move on to the next step of the analysis.
     </p>
     <p style="padding-top: 10px; font-size: 17px;"> 
         The NLP portion of this project is not yet complete, but should be soon!
