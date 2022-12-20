@@ -24,7 +24,7 @@ to process the raw data
 
 **AllData/trainingSets** holds the csv files that the ML algorithms are trained on
 
-**AllData/results** holds the information for graphing the lineplots
+**AllData/results** holds the information for graphing the line plots
 
 **models/main.py** holds the GBT script
 
