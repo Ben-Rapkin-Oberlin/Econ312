@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error
 from getData import read
 import plotly.express as px
-from pathlib import Path, PureWindowsPath
-
+from pathlib import Path, PureWindowsPath, PurePosixPath
+import os
 
 params = {
 
@@ -23,8 +23,16 @@ params = {
     'feature_fraction': 0.97,
     'subsample': .2
 }
+
+
+
 filename = PureWindowsPath('model\\NVDA_SOXX_BTC.csv')
 correct_path = Path(filename)
+print(correct_path)
+#correct_path = PurePosixPath(filename)
+#print(Path.cwd())
+#correct_path='/frontend/model/NVDA_SOXX_BTC.csv'
+#correct_path='NVDA_SOXX_BTC.csv'
 train,validation,X_test,y_test,date=read(correct_path,1)
 
 
