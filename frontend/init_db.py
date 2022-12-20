@@ -1,5 +1,6 @@
 import sqlite3
 import csv
+from pathlib import Path, PureWindowsPath
 
 connection = sqlite3.connect('database.db')
 
@@ -12,7 +13,9 @@ format=""
 vals="VALUES("
 fordatabase=""
 
-with open('AllData\\mergedData\\semi-final\\NVDA_SOXX_BTC.csv') as f:
+filename = PureWindowsPath('NVDA_SOXX_BTC.csv')
+correct_path = Path(filename)
+with open(correct_path) as f:
   reader = csv.reader(f)
   row1 = next(reader)
   for col in row1:
@@ -24,8 +27,9 @@ vals=vals[:-1]+')'
 #print(fordatabase[:-2])
 #print(format+vals)
 
-file = open('AllData\\mergedData\\semi-final\\NVDA_SOXX_BTC.csv')
-
+#filename = PureWindowsPath('NVDA_SOXX_BTC.csv')
+#correct_path = Path(filename)
+file=open(correct_path)
 contents = csv.reader(file)
 
 

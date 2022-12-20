@@ -5,6 +5,10 @@ import pandas as pd
 import json
 import plotly
 import plotly.express as px
+from pathlib import Path, PureWindowsPath
+
+
+
 app = Flask(__name__)
 
 def get_db_connection():
@@ -24,9 +28,9 @@ def get_data(post_id):
 
 @app.route('/')
 def home():
-    
-    full_filename = 'static\\gmeStock.png'
-    return render_template("home.html", user_image = full_filename)
+    filename = PureWindowsPath('static\\gmeStock.png')
+    correct_path = Path(filename)
+    return render_template("home.html", user_image = correct_path)
 
 @app.route('/financial')
 def table():
@@ -39,13 +43,18 @@ def table():
 
 @app.route('/results')
 def lineplot():
-    df = pd.read_csv('AllData\\results\\NVDA_SOXX_BTC.csv')
+    filename = PureWindowsPath('results\\NVDA_SOXX_BTC_GBT.csv')
+    correct_path = Path(filename)
+    df = pd.read_csv(correct_path)
     fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Gradient Boosted Tree')
     fig.add_vline(x=df.iloc[1832,0], line_width=3, line_dash="dash", line_color="black")
     fig.update_xaxes(rangeslider_visible=True)
     graphJSON1 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     
-    df = pd.read_csv('AllData\\results\\NVDA_SOXX_BTC.csv')
+
+    filename = PureWindowsPath('results\\NVDA_SOXX_BTC_NN.csv')
+    correct_path = Path(filename)
+    df = pd.read_csv(correct_path)
     fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Neural Network')
     fig.add_vline(x=df.iloc[1832,0], line_width=3, line_dash="dash", line_color="black")
     fig.update_xaxes(rangeslider_visible=True)

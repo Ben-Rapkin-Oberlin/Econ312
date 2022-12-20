@@ -5,6 +5,8 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_squared_error
 import plotly.express as px
+from pathlib import Path, PureWindowsPath
+
 
 def read(path,seed):
     seed=1
@@ -37,9 +39,9 @@ def read(path,seed):
     testingL=df.iloc[int(len(df)*0.9):,0]
     return trainingD,trainingL,validationD,validationL,testingD,testingL,temp
 
-
-X,Y,vx,vy,test,testL,date=read('model\\NVDA_SOXX_BTC.csv',1)
-
+filename = PureWindowsPath('model\\NVDA_SOXX_BTC.csv')
+correct_path = Path(filename)
+X,Y,vx,vy,test,testL,date=read(correct_path,1)
 
 #data is a pandas dataframe
 #col 0 is labels
@@ -48,7 +50,9 @@ X,Y,vx,vy,test,testL,date=read('model\\NVDA_SOXX_BTC.csv',1)
 
 regr = MLPRegressor(random_state=1, max_iter=500).fit(X, Y)
 
-df=pd.read_csv('model\\NVDA_SOXX_BTC.csv')
+filename = PureWindowsPath('model\\NVDA_SOXX_BTC.csv')
+correct_path = Path(filename)
+df=pd.read_csv(correct_path)
 df.drop(columns=['Date'], inplace=True)
 for column in df.columns:
         df[column] = (df[column] - df[column].min()) / (df[column].max() - df[column].min())
@@ -63,5 +67,8 @@ pred=regr.predict(x_all)
 
 print(mean_squared_error(y_all,pred))
 df=pd.DataFrame({'Date':date,'Truth':y_all,'Prediction':pred})
-df.to_csv('results\\NVDA_SOXX_BTC_NN.csv', index=False)
+
+filename = PureWindowsPath('results\\NVDA_SOXX_BTC_NN.csv')
+correct_path = Path(filename)
+df.to_csv(correct_path, index=False)
 
