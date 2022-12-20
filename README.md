@@ -15,25 +15,15 @@ go to http://127.0.0.1:5000 on the browser of your choice
 
 **frontend** houses the front end and most functional elements of the project. 
 
-**AllData/Datasets** contains all initially scraped and downloaded data This includes finical metrics in the economics folder
-and tweets in in both tweet_scrape and twitter scraping
+**model/trainingSets** holds the csv files that the ML algorithms are trained on
 
-**AllData/mergedData** holds intermediate csv files and scripts used
-to process the raw data
+**model/results** holds the information for graphing the line plots
 
+**models/GBT.py** holds the GBT script
 
-**AllData/trainingSets** holds the csv files that the ML algorithms are trained on
+**models/neuralNet.py** holds the NN script
 
-**AllData/results** holds the information for graphing the line plots
-
-**models/main.py** holds the GBT script
-
-**models/nn2.py** holds the NN script
-
-All other models/ files are related to earlier attempts at implementing the algorithms and/or code related to hyperparameter
-optimization, which has not been implemented for this demo. This is related to the .neptune repository
-
-All other folders are related to flask. Please let me know if you are interested in an explanation! 
+**old_files** holds files that were used to build this project, but not necessary to run it. They are saved for posterity's sake  
 
 
 
