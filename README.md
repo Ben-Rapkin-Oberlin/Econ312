@@ -54,10 +54,10 @@ $ ./run.sh
 **frontend/app.py**    
 [File] This file routes http addresses and converts pandas dataframes into json files
 
-**frontend/init_db.py**
+**frontend/init_db.py**    
 [File] this file initialized the database for the financial and twitter data. 
 
-**frontend/static**
+**frontend/static**    
 [Directory] image file and CSS 
 
 **frontend/templates**
