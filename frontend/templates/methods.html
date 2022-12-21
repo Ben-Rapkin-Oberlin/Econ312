@@ -55,7 +55,7 @@
         
         </style>
         <p>
-            Nam ran each tweet though a sentiment 
+            For our sentiment analysis, we use a TensorFlow to create the model with the predictor.py and the model consists of 1 embedding layer with 2 bidirectional layers followed by 1 hidden layer. The model predicts the positivity of the tweet in range [0, 1] with 0 is negative and 1 is positive. The sentiment_model.ipynb file will then use the model created above and predict 100 tweets each day from 2014 to 2022 and take the average of them for each day. The dataset then will be merged with the stock data in order to go through the final model.
         </p>    
     </body>
     <body>

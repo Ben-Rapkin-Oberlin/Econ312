@@ -46,7 +46,7 @@ train,validation,X_test,y_test,date=read(correct_path,1)
 
 
 
-kant=lgb.train(params,train_set=train,valid_sets=validation,num_boost_round=000)
+kant=lgb.train(params,train_set=train,valid_sets=validation,num_boost_round=2000)
 #kant.score(testingD, testingL)
 #print('Training accuracy {:.4f}'.format(kant.score(trainingD,trainingL)))
 #print('Testing accuracy {:.4f}'.format(kant.score(testingD,testingL)))

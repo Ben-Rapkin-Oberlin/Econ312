@@ -45,20 +45,25 @@ def table():
 def lineplot():
     filename = PureWindowsPath('results\\NVDA_SOXX_BTC_GBT.csv')
     correct_path = Path(filename)
-    df = pd.read_csv(correct_path)
-    fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Gradient Boosted Tree')
-    fig.add_vline(x=df.iloc[1832,0], line_width=3, line_dash="dash", line_color="black")
-    fig.update_xaxes(rangeslider_visible=True)
-    graphJSON1 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    
-
+    df1 = pd.read_csv(correct_path)
+    df1.rename(columns={'Prediction': 'Gradient Boosted Tree'}, inplace=True)
     filename = PureWindowsPath('results\\NVDA_SOXX_BTC_NN.csv')
     correct_path = Path(filename)
-    df = pd.read_csv(correct_path)
-    fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Neural Network')
-    fig.add_vline(x=df.iloc[1832,0], line_width=3, line_dash="dash", line_color="black")
+    df2 = pd.read_csv(correct_path)
+    df2.rename(columns={'Prediction': 'Neural Network'}, inplace=True)
+    df3=pd.merge(df1, df2, on='Date', how='inner')
+    df3.rename(columns={'Truth_x': 'Truth'}, inplace=True)
+    print(df3.columns)
+    print(df3.shape)
+    fig = px.line(df3, x='Date', y=['Truth','Gradient Boosted Tree','Neural Network'], title='Financial Data Only')
+    fig.add_vline(x=df3.iloc[1832,0], line_width=3, line_dash="dash", line_color="black")
+    #fig['Truth']['color']="#00ff00"
+    fig['data'][0]['line']['color']="#000000"
     fig.update_xaxes(rangeslider_visible=True)
-    graphJSON2 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    graphJSON1 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+
+    
     
     filename=PureWindowsPath('results/MSE.csv')
     correct_path=Path(filename)
@@ -66,13 +71,35 @@ def lineplot():
     df=pd.DataFrame({'Algorithm': ['GBT', 'NN'], 'Mean Squared Error' : [mse['GBTlimited'][0],mse['NNlimited'][0]]})
     fig = px.bar(df, x='Algorithm', y='Mean Squared Error', title='Comparative Accuracy', color='Algorithm')
     graphJSON3 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+    filename = PureWindowsPath('results\\combined_GBT.csv')
+    correct_path = Path(filename)
+    df1 = pd.read_csv(correct_path)
+    df1.rename(columns={'Prediction': 'Gradient Boosted Tree'}, inplace=True)
+    filename = PureWindowsPath('results\\combined_NN.csv')
+    correct_path = Path(filename)
+    df2 = pd.read_csv(correct_path)
+    df2.rename(columns={'Prediction': 'Neural Network'}, inplace=True)
+    df3=pd.merge(df1, df2, on='Date', how='inner')
+    df3.rename(columns={'Truth_x': 'Truth'}, inplace=True)
+    print(df3.columns)
+    print(df3.shape)
+    fig = px.line(df3, x='Date', y=['Truth','Gradient Boosted Tree','Neural Network'], title='Financial Data + Social Media Data')
+    fig.add_vline(x=df3.iloc[1832,0], line_width=3, line_dash="dash", line_color="black")
+    #fig['Truth']['color']="#00ff00"
+    fig['data'][0]['line']['color']="#000000"
+    fig.update_xaxes(rangeslider_visible=True)
+    graphJSON5 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+
+
     #print(mse['GBT'][0])
     df=pd.DataFrame({'Algorithm': ['GBT', 'NN'], 'Mean Squared Error' : [mse['GBT'][0],mse['NN'][0]]})
     fig = px.bar(df, x='Algorithm', y='Mean Squared Error', title='Comparative Accuracy', color='Algorithm')
     graphJSON4 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template('lineplot.html', graphJSON1=graphJSON1, graphJSON2=graphJSON2, graphJSON3=graphJSON3, graphJSON4=graphJSON4)
-
+    #return render_template('lineplot.html', graphJSON1=graphJSON1, graphJSON2=graphJSON2, graphJSON3=graphJSON3, graphJSON4=graphJSON4)
+    return render_template('lineplot.html', graphJSON1=graphJSON1, graphJSON3=graphJSON3, graphJSON4=graphJSON4, graphJSON5=graphJSON5)
 
 @app.route('/methodology')
 def methods():
