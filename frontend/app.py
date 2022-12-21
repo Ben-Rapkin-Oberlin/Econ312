@@ -104,3 +104,7 @@ def lineplot():
 @app.route('/methodology')
 def methods():
     return render_template('methods.html')
+
+@app.route('/futurework')
+def future():
+    return render_template('futureWork.html')

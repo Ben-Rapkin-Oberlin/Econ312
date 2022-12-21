@@ -33,14 +33,22 @@
         To provide some context, the mean squared error for both models on the testing data was around 10e-6, which is effectively zero. Ideally, we would like the models to perform just as well on the testing sets as they do on the training sets. However, neither model is performing particularly well in this case. It's worth noting that the purpose of this analysis is not to create production-ready models, but rather to see how sentiment analysis impacts their performance. As such, we only need a baseline to compare against. Let's move on to the next step of the analysis.
     </p>
     <body>
+        <h2 style="padding-top: 30px">Adding Sentiment Analysis</h2>
+        <hr style="width:50%;text-align:left;border-width: 2px;margin-left:0">
+        <p>
+            Once the basic model was tested and working, we could move on to scraping tweets and forming the second database. Using a variety of tools documented in the README and Methodology, we found the average sentiment and corresponding standard deviation for tweets of relevant hashtags on any given day. Those values were normalized it to a range of [0,1]. Then, all the information was merged onto the old financial metrics and fed into the same ML algorithms as before. You can see the results graphed below
+        </p>
     <div id='chart5' class='chart'”></div>
     </body><script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
     <script type='text/javascript'>
     var graphs = {{graphJSON5 | safe}};
     Plotly.plot('chart5',graphs,{})
     </script></html>
+    <p>
+        Overall, the chart above looks fairly similar to the original model with general trends being followed but low accuracy around day-to-day movements. But what does our loss function say?
+    </p>
 
-    <body>
+        <body>
     <div id='chart4' class='chart'”></div>
     </body><script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
     <script type='text/javascript'>
@@ -49,7 +57,16 @@
     </script></html> 
 
     <p style="padding-top: 10px; font-size: 17px;"> 
-        The NLP portion of this project is not yet complete, but should be soon!
+        As you can see, the MSE has actually increased from its original values. The specific amounts may vary run to run as this website will update if you run the models yourself, however, the increase in MSE from the first model to this one is typically >20u.     </p>
     </p>
-
+    <p>
+    <h2 style="padding-top: 30px">Conclusion</h2>
+    <hr style="width:50%;text-align:left;border-width: 2px;margin-left:0">
+    <p style="padding-top: 10px; font-size: 17px;"> 
+        So, what is the takeaway here? While the actual results of our model are not as inspiring as we would have hoped, they don’t rule out the utility of social media. Instead, they have shown us that the data is far nosier than initially predicted, to the point where it covers up a lot of the information contained in the still present financial data. In other words, the need for more powerful natural language processing models and better statistical metrics than Mean and Standard Deviation are the next step forward.
+    </p>
+    <p style="padding-top: 10px; font-size: 17px;"> 
+        Another surprising finding of this work was the performance comparison of gradient boosted trees to fully connected neural networks. Most of the current literature would predict that given the low amount and highly noisy nature of our data set, GBT should far over perform against NN. Infact, this environment is almost their exact intended use case. Reasons for why the performance difference may exist will be looked at deeper in the Future Work section, however, the results reinforce just how versatile and powerful even simple python Machine Learning libraries like sklearn really are.
+    </p>
+    
 {% endblock %}
