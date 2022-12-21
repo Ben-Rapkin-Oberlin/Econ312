@@ -3,27 +3,44 @@
 This project is an attempt to make a stock prediction tool using mixed datasets.
 There is a front end included with the project, please see below!
 
-**To Run**
-(optionally make a virtual environment)
-$ pip install -r requirements.txt
-$ cd frontend
-$ python init_db.py
-$ python -m flash run
-go to http://127.0.0.1:5000 on the browser of your choice
+## **Website (currently out dated)**
 
-**requirements.txt** All of the dependencies
+## **Run Locally**
+There are included bash and powershell scripts to start the project.
 
-**frontend** houses the front end and most functional elements of the project. 
+**Linux**
+    ./run.sh
 
-**model/trainingSets** holds the csv files that the ML algorithms are trained on
+**Windows**
+    ./run.ps1
 
-**model/results** holds the information for graphing the line plots
+These scripts will start the server locally. Additionally, they will ensure that the models have been run.
 
-**models/GBT.py** holds the GBT script
+## **Notable Directories and Files**
 
-**models/neuralNet.py** holds the NN script
+**requirements.txt** 
+[File] List of all the dependencies. This is installed via the shell scripts above
 
-**old_files** holds files that were used to build this project, but not necessary to run it. They are saved for posterity's sake  
+**frontend** 
+[Directory] Houses the front end and most functional elements of the project. 
+
+**frontend/model** 
+[Directory] Holds the algorithms and their corresponding csv files.
+
+**model/GBT.py** 
+[File] Holds the script for the Gradient Boosted Tree. This was implemented via Lightgbm
+
+**model/neuralNet.py**
+[File] Holds the script for the Neural Network. This was implemented via sklearn
+
+**model/getData.py**
+[File] Reads in the data file (model/NVDA_SOXX_BTC.csv) and preprocesses it
+
+**frontend/results** 
+[Directory] Contains the predicted vs actual data from the Machine Learning Models
+
+**old_files**
+[Directory] Holds depreciated files that were used to build this project, but are no longer necessary. These are included in case of specific questions about data, preprocess, or other small facets of the project. 
 
 
 
