@@ -7,30 +7,29 @@ if [ "$1" != "-v" ] ; then
     pip install -r frontend/requirements.txt > /dev/null 
     FILE1=frontend/results/NVDA_SOXX_BTC_GBT.csv
     FILE2=frontend/results/NVDA_SOXX_BTC_NN.csv
-    File3=frontend/results/combined_GBT.csv
-    File4=frontend/results/combined_NN.csv
+    FILE3=frontend/results/combined_GBT.csv
+    FILE4=frontend/results/combined_NN.csv
     if !(test -f "$FILE1"); then
-        #echo 'building GBT model'
+        echo 'building GBT model 1'
         cd frontend/model
         python GBT.py NVDA_SOXX_BTC.csv 2>&1> /dev/null
         cd '../..'
     fi
-
     if !(test -f "$FILE2"); then
-        #echo 'building NN model'
+        echo 'building NN model1 1'
         cd frontend/model
         python neuralNet.py NVDA_SOXX_BTC.csv 2>&1> /dev/null
         cd '../..'
     fi
     if !(test -f "$FILE3"); then
-        #echo 'building GBT model'
+        echo 'building GBT model'
         cd frontend/model
         python GBT.py combined.csv 2>&1> /dev/null
         cd '../..'
     fi
 
     if !(test -f "$FILE4"); then
-        #echo 'building NN model'
+        echo 'building NN model'
         cd frontend/model
         python neuralNet.py combined.csv 2>&1> /dev/null
         cd '../..'
