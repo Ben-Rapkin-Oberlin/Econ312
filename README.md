@@ -7,7 +7,8 @@ There is a front end included with the project, please see below!
 http://benrapkin.pythonanywhere.com/
 
 ## **Run Locally**  
-If you would like to host the website locally, there are included bash and powershell scripts to start the project.  
+If you would like to host the website locally, there are included bash and PowerShell scripts to run the project. These scripts will initialize the SQL database, ensure that
+the models have been run, and start the server.
 
 **Linux**  
 ```
@@ -18,10 +19,11 @@ $ ./run.sh
 > ./run.ps1 
 ``` 
 
-These scripts will start the server locally. Additionally, they will ensure that the models have been run.
 
-## **Notable Directories and Files**
+## **Notable Files and Directories**
 
+
+### Machine Learning and Data   
 **requirements.txt**  
 [File] List of all the dependencies. This is installed via the shell scripts above
 
@@ -42,6 +44,23 @@ These scripts will start the server locally. Additionally, they will ensure that
  
 **frontend/results**   
 [Directory] Contains the predicted vs actual data from the Machine Learning Models
- 
+
+
+### Website   
+
+**frontend/app.py**    
+[File] This file routes http addresses and converts pandas dataframes into json files
+
+**frontend/init_db.py**
+[File] this file initialized the database for the financial and twitter data. 
+
+**frontend/static**
+[Directory] image file and CSS 
+
+**frontend/templates**
+[Directory] This folder holds the html files that form the basis of each page. They make use of the Jinja2 engine to allow for python-like loops.
+
+
+### Other 
 **old_files**  
 [Directory] Holds depreciated files that were used to build this project, but are no longer necessary. These are included in case of specific questions about data, preprocess, or other small facets of the project. 
