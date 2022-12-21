@@ -10,10 +10,13 @@ http://benrapkin.pythonanywhere.com/
 If you would like to host the website locally, there are included bash and powershell scripts to start the project.  
 
 **Linux**  
-        ./run.sh  
-
+```
+$ ./run.sh  
+```
 **Windows**  
-        ./run.ps1  
+```
+> ./run.ps1 
+``` 
 
 These scripts will start the server locally. Additionally, they will ensure that the models have been run.
 
