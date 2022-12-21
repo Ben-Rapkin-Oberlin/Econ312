@@ -5,7 +5,7 @@ import pandas as pd
 import json
 import plotly
 import plotly.express as px
-from pathlib import Path, PureWindowsPath
+from pathlib import Path, PureWindowsPath, PurePosixPath
 
 
 
@@ -60,11 +60,19 @@ def lineplot():
     fig.update_xaxes(rangeslider_visible=True)
     graphJSON2 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     
-
-    df=pd.DataFrame({'Algorithm': ['GBT', 'NN'], 'Mean Squared Error' : [.000185,.000418]})
+    filename=PureWindowsPath('results/MSE.csv')
+    correct_path=Path(filename)
+    mse=pd.read_csv(correct_path)
+    df=pd.DataFrame({'Algorithm': ['GBT', 'NN'], 'Mean Squared Error' : [mse['GBTlimited'][0],mse['NNlimited'][0]]})
     fig = px.bar(df, x='Algorithm', y='Mean Squared Error', title='Comparative Accuracy', color='Algorithm')
     graphJSON3 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template('lineplot.html', graphJSON1=graphJSON1, graphJSON2=graphJSON2, graphJSON3=graphJSON3)
+    #print(mse['GBT'][0])
+    df=pd.DataFrame({'Algorithm': ['GBT', 'NN'], 'Mean Squared Error' : [mse['GBT'][0],mse['NN'][0]]})
+    fig = px.bar(df, x='Algorithm', y='Mean Squared Error', title='Comparative Accuracy', color='Algorithm')
+    graphJSON4 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return render_template('lineplot.html', graphJSON1=graphJSON1, graphJSON2=graphJSON2, graphJSON3=graphJSON3, graphJSON4=graphJSON4)
+
 
 @app.route('/methodology')
 def methods():

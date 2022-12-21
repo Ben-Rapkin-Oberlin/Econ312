@@ -8,7 +8,7 @@ from getData import read
 import plotly.express as px
 from pathlib import Path, PureWindowsPath, PurePosixPath
 import os
-
+import sys
 params = {
 
     "boosting_type": "gbdt",
@@ -30,13 +30,23 @@ params = {
 #path= Path(a)
 #os.chdir(path)
 #print(Path.cwd())
-filename = PurePosixPath('./NVDA_SOXX_BTC.csv')
+MSEtype=0
+
+if sys.argv[1]=='NVDA_SOXX_BTC.csv':
+    filename = PurePosixPath('./NVDA_SOXX_BTC.csv')
+    MSEtype='GBTlimited'
+elif sys.argv[1]=='combined.csv':
+    filename = PurePosixPath('./combined.csv')
+    MSEtype='GBT'
+else:
+    print('Invalid file name')
+    sys.exit(1)
 correct_path = Path(filename)
 train,validation,X_test,y_test,date=read(correct_path,1)
 
 
 
-kant=lgb.train(params,train_set=train,valid_sets=validation,num_boost_round=1000)
+kant=lgb.train(params,train_set=train,valid_sets=validation,num_boost_round=000)
 #kant.score(testingD, testingL)
 #print('Training accuracy {:.4f}'.format(kant.score(trainingD,trainingL)))
 #print('Testing accuracy {:.4f}'.format(kant.score(testingD,testingL)))
@@ -72,8 +82,8 @@ te=kant.predict(testingD, num_iteration=kant.best_iteration)
 #print('MSE trp ',mean_squared_error(trainingL,trp))
 #print('MSE vp ',mean_squared_error(validationL,vp))
 #print('MSE te ',mean_squared_error(testingL,te))
-
-#print('MSE all: ',mean_squared_error(y_all,y_pred))
+mse=mean_squared_error(y_all,y_pred)
+print('MSE all: ',mse)
 #print(date)
 print(date.shape)
 #plt.plot(date, y_test, label = "Truth")
@@ -83,9 +93,18 @@ print(date.shape)
 
 df=pd.DataFrame({'Date':date,'Truth':y_all,'Prediction':y_pred})
 
-filename = PurePosixPath('../results/NVDA_SOXX_BTC_GBT.csv')
+if sys.argv[1]=='NVDA_SOXX_BTC.csv':
+    filename = PurePosixPath('../results/NVDA_SOXX_BTC_GBT.csv')
+elif sys.argv[1]=='combined.csv':
+    filename = PurePosixPath('../results/combined_GBT.csv')
 correct_path = Path(filename)
 df.to_csv(correct_path, index=False)
+
+fn2=PurePosixPath('../results/MSE.csv')
+correct_path2 = Path(fn2)
+GMSE=pd.read_csv(correct_path2)
+GMSE[MSEtype]=mse
+GMSE.to_csv(correct_path2, index=False)
 
 #fig = px.line(df, x='Date', y=['Truth','Prediction'], title='Stock Price Prediction')
 #fig.update_xaxes(rangeslider_visible=True)

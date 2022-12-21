@@ -6,6 +6,7 @@ import numpy as np
 from sklearn.metrics import mean_squared_error
 import plotly.express as px
 from pathlib import Path, PureWindowsPath , PurePosixPath
+import sys
 
 
 def read(path,seed):
@@ -39,7 +40,16 @@ def read(path,seed):
     testingL=df.iloc[int(len(df)*0.9):,0]
     return trainingD,trainingL,validationD,validationL,testingD,testingL,temp
 
-filename = PurePosixPath('./NVDA_SOXX_BTC.csv')
+MSEtype=0
+if sys.argv[1]=='NVDA_SOXX_BTC.csv':
+    filename = PurePosixPath('./NVDA_SOXX_BTC.csv')
+    MSEtype='NNlimited'
+elif sys.argv[1]=='combined.csv':
+    filename = PurePosixPath('./combined.csv')
+    MSEtype='NN'
+else:
+    print('Invalid file name')
+    sys.exit(1)
 correct_path = Path(filename)
 X,Y,vx,vy,test,testL,date=read(correct_path,1)
 
@@ -48,7 +58,7 @@ X,Y,vx,vy,test,testL,date=read(correct_path,1)
 #print("#####Neural Network#####")
 
 
-regr = MLPRegressor(random_state=1, max_iter=1000,verbose=True,n_iter_no_change=400).fit(X, Y)
+regr = MLPRegressor(random_state=1, max_iter=2000,verbose=True,n_iter_no_change=400,tol=.000001).fit(X, Y)
 
 
 df=pd.read_csv(correct_path)
@@ -63,11 +73,19 @@ y_all=df.iloc[:,0]
 
 
 pred=regr.predict(x_all)
-
-#print(mean_squared_error(y_all,pred))
+mse=mean_squared_error(y_all,pred)
+print(mse)
 df=pd.DataFrame({'Date':date,'Truth':y_all,'Prediction':pred})
 
-filename = PurePosixPath('../results/NVDA_SOXX_BTC_NN.csv')
+if sys.argv[1]=='NVDA_SOXX_BTC.csv':
+    filename = PurePosixPath('../results/NVDA_SOXX_BTC_NN.csv')
+elif sys.argv[1]=='combined.csv':
+    filename = PurePosixPath('../results/combined_NN.csv')
 correct_path = Path(filename)
 df.to_csv(correct_path, index=False)
 
+fn2=PurePosixPath('../results/MSE.csv')
+correct_path2 = Path(fn2)
+NMSE=pd.read_csv(correct_path2)
+NMSE[MSEtype]=mse
+NMSE.to_csv(correct_path2, index=False)

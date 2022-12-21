@@ -35,12 +35,17 @@
     var graphs = {{graphJSON3 | safe}};
     Plotly.plot('chart3',graphs,{});
     </script></html>
-        
-</body>
-<body>
     <p style="padding-top: 10px; font-size: 17px;"> 
         To provide some context, the mean squared error for both models on the testing data was around 10e-6, which is effectively zero. Ideally, we would like the models to perform just as well on the testing sets as they do on the training sets. However, neither model is performing particularly well in this case. It's worth noting that the purpose of this analysis is not to create production-ready models, but rather to see how sentiment analysis impacts their performance. As such, we only need a baseline to compare against. Let's move on to the next step of the analysis.
     </p>
+    <div id='chart4' class='chart'”></div>
+    </body><script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script type='text/javascript'>
+    var graphs = {{graphJSON4 | safe}};
+    Plotly.plot('chart4',graphs,{});
+    </script></html> 
+</body>
+<body>
     <p style="padding-top: 10px; font-size: 17px;"> 
         The NLP portion of this project is not yet complete, but should be soon!
     </p>
