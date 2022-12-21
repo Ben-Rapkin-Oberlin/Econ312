@@ -4,29 +4,36 @@
     <h1>{% block title %} Continued Study {% endblock %}</h1>
     <hr style="width:50%;text-align:left;border-width: 2px;margin-left:0"> 
     <body>
-        <p style="padding-top: 30px; font-size: 25px;"> 
-        1. Data collection
-            size of finacial and tweets
-            time period
-            more than twitter
+        <p style="padding-top: 30px; font-size: 17px;"> 
+            While we are proud of the results in the project, they have given rise to a multitude of further questions about what the next steps in advancing this model. As we touched on briefly in the conclusion, one of the largest is how to extract information from noisy twitter data. The likely could involve the use of larger language model that would allow for more complex analysis. At the moment, our model only considers the tone of the tweet, however, tone is not a perfect map to buy sell signals. For instance, if a company, perhaps a defense contractor or fossil fuels extractor, is disliked, people may express optimism at stock prices going down. Conversely, if a company's PR drastic shifted in a short time frame, the opposite could be true. 
+        </p>
+        <p style="padding-top: 30px; font-size: 17px;"> 
+            Additionally, the current processing treats all tweets as equally significant, but of course that’s not the case. Depending on follower count, replies, and any number of further metrics, one person's tweet may be vastly more important than another. Perhaps future iterations could apply a scaler weighting function to the tweet's sentiment based on the account characteristics
+        </p>
+        <p style="padding-top: 30px; font-size: 17px;"> 
+            Continuing On, another area that we could dive into would be expanding the financial metrics used. It is likely that one of the reasons that the second model did worse than the first is that there were simply more attributes related to tweets than financial metrics, making it harder to learn to ignore them. If we could change the proportion of financial data to public sentiment, then perhaps we can find more performance.
+        </p>
+        <p style="padding-top: 30px; font-size: 17px;"> 
+            On the topic of Machine learning algorithms, a significant factor in our implementation was that we did only a small amount hyperparameter tuning for either model. This may be why the neural network out preformed gradient boosted trees despite most research predicting the contrary. 
+        </p>
+        <p style="padding-top: 30px; font-size: 17px;"> 
+       <p style="padding-top: 30px; font-size: 17px;"> 
+        One of the more out there avenues this optimizing could take is looking into different network architectures. Considering that we want the neural network to consider multiple days at a time, it may be possible that instead of merging all data into one row, we convert the dataset into instances of matrices, where each sub row would contain a day’s worth of information, and feed that into a convoluted network. This is a nonstandard application of the technique, but it would be incredibly interesting to see if the network could 'classify' these instances into buy/sell signals in a manner similar to that of sub image classification.  
+    
+        </p>
+        <p style="padding-top: 30px; font-size: 17px;"> 
+            Overall, the use of social media data, particularly Twitter, for financial analysis has gained significant attention in recent years. The ability to leverage this vast and easily accessible source of information has the potential to provide valuable insights into market trends and individual company performance. However, accurately predicting buy/sell signals from Twitter data remains a challenging task due to the noise and complexity of the data.
+        </p>
+        <p style="padding-top: 30px; font-size: 17px;"> 
+            This project has made significant progress in developing a model for predicting buy/sell signals from Twitter data, but it has also highlighted the need for further research in order to improve the model's performance. By addressing issues such as extracting information from noisy data, weighting tweets based on account characteristics, expanding the financial metrics used, and optimizing hyperparameters and network architectures, we can continue to advance this field of research and potentially unlock the full potential of social media data for financial analysis.
+        </p>
+      
 
-        2. 
 
-        3. Model optimization
-            Hyperparameter tuning
-         </p>
-    </body>
-    <body>
-        <style>
-            p {
-              padding-top: 10px;
-              font-size: 17px;
-              }
-        
-        </style>
-    <p>
-        aaaa
-    </p> 
+
+
+
+
     </body>      
 
 {% endblock %}
