@@ -5,9 +5,6 @@
 <h1>{% block title %} Methodology {% endblock %}</h1>
 <hr style="width:50%;text-align:left;border-width: 2px;margin-left:0"> 
     <body>
-        <p>
-        Dispite repeated and numerous requestes, none of my fellow group memebers submitted their portion of the methodology. I am very sorry for the inconvenience.
-        </p>
         <p style="padding-top: 100px; font-size: 25px;"> 
             <b>Scraping: Maurice Freese</b>
         </p>
@@ -79,10 +76,14 @@
             The next step in preparing the data was normalization, which was achieved by dividing each value by the maximum value in its row, resulting in a range of [0,1]. This was done to prevent the algorithms from being biased towards larger values. The data was then split into training (67.5%), validation (22.5%), and test (10%) sets. The first two sets were shuffled to ensure that the algorithms were learning to predict from eight-day histories, as otherwise they might overly rely on rules for how the market behaved during the period contained in the validation data, which may not apply to other periods. Experimentally, we found that shuffling the data resulted in significantly higher accuracy. It is worth noting that the test data was not shuffled (although when it was, the algorithms performed significantly better), as in actual use of stock price predictors, the data is typically sequential. After training, the scores of the algorithms were recorded in a CSV file for later reference.
         </p>
         <p>
-            Unfortunately, due to issues other encountered with NLP, the twitter data has not yet been made available for processing, so the current financial models cannot be compared to their humanistic counterparts. However, hopefully this will be implemented very soon!
+            Once Nam had run the twitter data though the sentiment analysis, it went through a similar process to the financial data. An important note, however, was that it was not merged with the past 8 days. This was out of concern as the size of a single day of the twitter data, was at a similar scale to the financial data. Importantly it was not as large, but large enough that if multiplied by 8 it would fully down out the financial data.
         </p>
         <p>
-            After all the data analysis was done, the time came to build a frontend so that people could see, interpret, and interact with the data. The framework I settled on was Flask as it relates very closely to what we’ve been doing in class. Flask is made to use python and can be coordinated with an SQLite database. Before this project I had never done any web development, so this was an interesting first for me and took up a ton of time
+    After all the data analysis was done, the time came to build a frontend and write all the analysis down so that people could see, interpret, and interact with the data. The framework I settled on was Flask as it relates very closely to what we’ve been doing in class. Flask is made to use python and can be coordinated with an SQLite database. Before this project I had never done any web development nor tried html or CSS,  so this was an interesting first for me and took up a ton of time. Additionally, before this course I had no experience with pandas, matplotlib, or plotly, so preparing the graphs involved quite the learning curve.  After building the initial website, I moved to host it on python anywhere using a smaller sub git repository to house only the necessary files. Finally, I went back an added some bash and PowerShell scripts to ensure the website could still be hosted locally with very minimal coding.  
+        </p>
+        <p>
+            After all the data analysis was done, the time came to build a frontend so that people could see, interpret, and interact with the data. The framework I settled on was Flask as it relates very closely to what we’ve been doing in class. Flask is made to use python and can be coordinated with an SQLite database. Before this project I had never done any web development, so this was an interesting first for me and took up a ton of time.
+            I 
         </p>
         </body>
 

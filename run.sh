@@ -12,14 +12,14 @@ if [ "$1" != "-v" ] ; then
     if !(test -f "$FILE1"); then
         #echo 'building GBT model'
         cd frontend/model
-        python GBT.py NVDA_SOXX_BTC_GBT.csv 2>&1> /dev/null
+        python GBT.py NVDA_SOXX_BTC.csv 2>&1> /dev/null
         cd '../..'
     fi
 
     if !(test -f "$FILE2"); then
         #echo 'building NN model'
         cd frontend/model
-        python neuralNet.py NVDA_SOXX_BTC_GBT.csv 2>&1> /dev/null
+        python neuralNet.py NVDA_SOXX_BTC.csv 2>&1> /dev/null
         cd '../..'
     fi
     if !(test -f "$FILE3"); then

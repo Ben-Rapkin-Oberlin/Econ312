@@ -4,10 +4,12 @@ This project is an attempt to make a stock prediction tool using mixed datasets.
 
 Please Note that 1Password1 is Ben Rapkin
 
-## **Website (currently out dated)**  
+Thanks to Professor Moskalev for suggesting we migrate the project to a low-code/no code format. Below we have added both option!
+
+## **No Code/Public Website**   
 http://benrapkin.pythonanywhere.com/
 
-## **Run Locally**  
+## **Low Code/Run Locally**  
 If you would like to host the website locally, there are included bash and PowerShell scripts to run the project. These scripts will initialize the SQL database, ensure that the models have made their predictions, and start the server.
 
 **Linux**  
