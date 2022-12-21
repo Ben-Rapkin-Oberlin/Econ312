@@ -66,6 +66,6 @@ def lineplot():
     graphJSON3 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template('lineplot.html', graphJSON1=graphJSON1, graphJSON2=graphJSON2, graphJSON3=graphJSON3)
 
-@app.route('/methods')
+@app.route('/methodology')
 def methods():
     return render_template('methods.html')

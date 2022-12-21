@@ -1,0 +1,20 @@
+<h1 id="econ312-final-project">Econ312 Final Project</h1>
+<p>This project is an attempt to make a stock prediction tool using mixed datasets.
+There is a front end included with the project, please see below!  </p>
+<h2 id="-website-currently-out-dated-"><strong>Website (currently out dated)</strong></h2>
+<p><a href="http://benrapkin.pythonanywhere.com/">http://benrapkin.pythonanywhere.com/</a></p>
+<h2 id="-run-locally-"><strong>Run Locally</strong></h2>
+<p>If you would like to host the website locally, there are included bash and powershell scripts to start the project and ensure that the models have been executed.</p>
+<p><strong>Linux</strong>  </p>
+<pre><code>$ ./<span class="hljs-keyword">run</span>.<span class="bash">sh</span>
+</code></pre><p><strong>Windows</strong>  </p>
+<pre><code>&gt; ./<span class="hljs-keyword">run</span>.<span class="bash">ps1</span>
+</code></pre><h2 id="-notable-directories-and-files-"><strong>Notable Directories and Files</strong></h2>
+<p><strong>requirements.txt</strong><br>[File] List of all the dependencies. This is installed via the shell scripts above</p>
+<p><strong>frontend</strong><br>[Directory] Houses the front end and most functional elements of the project. </p>
+<p><strong>frontend/model</strong><br>[Directory] Holds the algorithms and their corresponding csv files.</p>
+<p><strong>model/GBT.py</strong><br>[File] Holds the script for the Gradient Boosted Tree. This was implemented via Lightgbm</p>
+<p><strong>model/neuralNet.py</strong><br>[File] Holds the script for the Neural Network. This was implemented via sklearn</p>
+<p><strong>model/getData.py</strong><br>[File] Reads in the data file (model/NVDA_SOXX_BTC.csv) and preprocesses it</p>
+<p><strong>frontend/results</strong><br>[Directory] Contains the predicted vs actual data from the Machine Learning Models</p>
+<p><strong>old_files</strong><br>[Directory] Holds depreciated files that were used to build this project, but are no longer necessary. These are included in case of specific questions about data, preprocess, or other small facets of the project. </p>
