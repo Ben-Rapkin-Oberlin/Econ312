@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_squared_error
 import plotly.express as px
-from pathlib import Path, PureWindowsPath
+from pathlib import Path, PureWindowsPath , PurePosixPath
 
 
 def read(path,seed):
@@ -39,7 +39,7 @@ def read(path,seed):
     testingL=df.iloc[int(len(df)*0.9):,0]
     return trainingD,trainingL,validationD,validationL,testingD,testingL,temp
 
-filename = PureWindowsPath('model\\NVDA_SOXX_BTC.csv')
+filename = PurePosixPath('./NVDA_SOXX_BTC.csv')
 correct_path = Path(filename)
 X,Y,vx,vy,test,testL,date=read(correct_path,1)
 
@@ -48,10 +48,9 @@ X,Y,vx,vy,test,testL,date=read(correct_path,1)
 #print("#####Neural Network#####")
 
 
-regr = MLPRegressor(random_state=1, max_iter=500).fit(X, Y)
+regr = MLPRegressor(random_state=1, max_iter=2000).fit(X, Y)
 
-filename = PureWindowsPath('model\\NVDA_SOXX_BTC.csv')
-correct_path = Path(filename)
+
 df=pd.read_csv(correct_path)
 df.drop(columns=['Date'], inplace=True)
 for column in df.columns:
@@ -65,10 +64,10 @@ y_all=df.iloc[:,0]
 
 pred=regr.predict(x_all)
 
-print(mean_squared_error(y_all,pred))
+#print(mean_squared_error(y_all,pred))
 df=pd.DataFrame({'Date':date,'Truth':y_all,'Prediction':pred})
 
-filename = PureWindowsPath('results\\NVDA_SOXX_BTC_NN.csv')
+filename = PurePosixPath('../results/NVDA_SOXX_BTC_NN.csv')
 correct_path = Path(filename)
 df.to_csv(correct_path, index=False)
 

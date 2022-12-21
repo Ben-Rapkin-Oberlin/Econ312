@@ -21,29 +21,26 @@ params = {
     "bagging_freq": 9,
     "max_depth": 18,
     'feature_fraction': 0.97,
-    'subsample': .2
+    'subsample': .2,
+    'verbose': -1
 }
 
-
-
-filename = PureWindowsPath('model\\NVDA_SOXX_BTC.csv')
-correct_path = Path(filename)
-print(correct_path)
-#correct_path = PurePosixPath(filename)
 #print(Path.cwd())
-#correct_path='/frontend/model/NVDA_SOXX_BTC.csv'
-#correct_path='NVDA_SOXX_BTC.csv'
+#a=PurePosixPath('../frontend/model')
+#path= Path(a)
+#os.chdir(path)
+#print(Path.cwd())
+filename = PurePosixPath('./NVDA_SOXX_BTC.csv')
+correct_path = Path(filename)
 train,validation,X_test,y_test,date=read(correct_path,1)
 
 
 
-kant=lgb.train(params,train_set=train,valid_sets=validation,early_stopping_rounds=50,num_boost_round=2000,verbose_eval=False)
+kant=lgb.train(params,train_set=train,valid_sets=validation,num_boost_round=2000)
 #kant.score(testingD, testingL)
 #print('Training accuracy {:.4f}'.format(kant.score(trainingD,trainingL)))
 #print('Testing accuracy {:.4f}'.format(kant.score(testingD,testingL)))
 
-filename = PureWindowsPath('model\\NVDA_SOXX_BTC.csv')
-correct_path = Path(filename)
 df=pd.read_csv(correct_path)
 df.drop(columns=['Date'], inplace=True)
 for column in df.columns:
@@ -76,7 +73,7 @@ te=kant.predict(testingD, num_iteration=kant.best_iteration)
 #print('MSE vp ',mean_squared_error(validationL,vp))
 #print('MSE te ',mean_squared_error(testingL,te))
 
-print('MSE all: ',mean_squared_error(y_all,y_pred))
+#print('MSE all: ',mean_squared_error(y_all,y_pred))
 #print(date)
 print(date.shape)
 #plt.plot(date, y_test, label = "Truth")
@@ -86,7 +83,7 @@ print(date.shape)
 
 df=pd.DataFrame({'Date':date,'Truth':y_all,'Prediction':y_pred})
 
-filename = PureWindowsPath('results\\NVDA_SOXX_BTC_GBT.csv')
+filename = PurePosixPath('../results/NVDA_SOXX_BTC_GBT.csv')
 correct_path = Path(filename)
 df.to_csv(correct_path, index=False)
 

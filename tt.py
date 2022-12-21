@@ -1,3 +1,1 @@
-a='abcd'
-b='ab'
-print(a-b)
+print('hello world')
