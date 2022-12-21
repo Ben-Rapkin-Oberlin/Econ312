@@ -1,13 +1,14 @@
 # Econ312 Final Project  
 
-This project is an attempt to make a stock prediction tool using mixed datasets.
-There is a front end included with the project, please see below!  
+This project is an attempt to make a stock prediction tool using mixed datasets. There is a frontend included with the project, please see below!  
+
+Please Note that 1Password1 is Ben Rapkin
 
 ## **Website (currently out dated)**  
 http://benrapkin.pythonanywhere.com/
 
 ## **Run Locally**  
-If you would like to host the website locally, there are included bash and PowerShell scripts to run the project. These scripts will initialize the SQL database, ensure that the models have been run, and start the server.
+If you would like to host the website locally, there are included bash and PowerShell scripts to run the project. These scripts will initialize the SQL database, ensure that the models have made their predictions, and start the server.
 
 **Linux**  
 ```
