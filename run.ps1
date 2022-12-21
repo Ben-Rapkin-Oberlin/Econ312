@@ -21,7 +21,7 @@ if ( "$args" -eq "-v" )
     }
 
     python -m pip install --upgrade pip
-    pip install -r requirements.txt
+    pip install -r frontend\requirements.txt
     Set-Location frontend
     python init_db.py
     Write-Output '######################################'
@@ -58,7 +58,7 @@ else
 
 
     python -m pip install --upgrade pip > $null 
-    pip install -r requirements.txt > $null 
+    pip install -r  frontend\requirements.txt > $null 
     Set-Location frontend
     python init_db.py > $null 
     Write-Output '######################################'

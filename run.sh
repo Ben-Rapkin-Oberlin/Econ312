@@ -19,7 +19,7 @@ if [ "$1" != "-v" ] ; then
         cd '../..'
     fi
     python -m pip install --upgrade pip > /dev/null 
-    pip install -r requirements.txt > /dev/null 
+    pip install -r frontend/requirements.txt > /dev/null 
     cd frontend
     python init_db.py > /dev/null 
     echo '######################################'
@@ -47,7 +47,7 @@ else
         cd '../..'
     fi
     python -m pip install --upgrade pip || (echo "python -m pip install --upgrade pip failed" && exit 1)
-    pip install -r requirements.txt || (echo "pip install failed" && exit 1)
+    pip install -r frontend/requirements.txt || (echo "pip install failed" && exit 1)
     cd frontend || (echo "cd frontend failed" && exit 1)
     python init_db.py || (echo "python init_db.py failed" && exit 1)
     python -m flask run || (echo "python -m flask run failed" && exit 1)

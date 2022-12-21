@@ -7,8 +7,7 @@ There is a front end included with the project, please see below!
 http://benrapkin.pythonanywhere.com/
 
 ## **Run Locally**  
-If you would like to host the website locally, there are included bash and PowerShell scripts to run the project. These scripts will initialize the SQL database, ensure that
-the models have been run, and start the server.
+If you would like to host the website locally, there are included bash and PowerShell scripts to run the project. These scripts will initialize the SQL database, ensure that the models have been run, and start the server.
 
 **Linux**  
 ```
@@ -24,11 +23,12 @@ $ ./run.sh
 
 
 ### Machine Learning and Data   
-**requirements.txt**  
-[File] List of all the dependencies. This is installed via the shell scripts above
 
 **frontend**  
 [Directory] Houses the front end and most functional elements of the project. 
+
+**frontend/requirements.txt**  
+[File] List of all the dependencies. This is installed via the shell scripts above
 
 **frontend/model**  
 [Directory] Holds the algorithms and their corresponding csv files.
