@@ -60,7 +60,7 @@ $ ./run.sh
 **frontend/static**    
 [Directory] image file and CSS 
 
-**frontend/templates**
+**frontend/templates**    
 [Directory] This folder holds the html files that form the basis of each page. They make use of the Jinja2 engine to allow for python-like loops.
 
 
