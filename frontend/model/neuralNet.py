@@ -48,7 +48,7 @@ X,Y,vx,vy,test,testL,date=read(correct_path,1)
 #print("#####Neural Network#####")
 
 
-regr = MLPRegressor(random_state=1, max_iter=2000).fit(X, Y)
+regr = MLPRegressor(random_state=1, max_iter=1000,verbose=True,n_iter_no_change=400).fit(X, Y)
 
 
 df=pd.read_csv(correct_path)
